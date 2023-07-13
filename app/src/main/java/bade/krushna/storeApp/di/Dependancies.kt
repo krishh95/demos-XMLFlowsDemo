@@ -1,6 +1,6 @@
-package bade.krushna.xmlflowsdemo.di
+package bade.krushna.storeApp.di
 
-import bade.krushna.xmlflowsdemo.data.api.IApiServices
+import bade.krushna.storeApp.data.api.IApiServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Dependancies {
 
     @Provides
-    fun retrofit() : IApiServices{
+    fun retrofit() : IApiServices {
         return Retrofit
             .Builder()
             .baseUrl("")
