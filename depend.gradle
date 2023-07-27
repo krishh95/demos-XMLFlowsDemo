@@ -1,0 +1,45 @@
+ext.useXML = "false"
+ext.BASEAPI = "false"
+
+
+
+/*
+ext.smallcase = [
+        gatewayName        : '"wqe"',
+        artifactoryUser    : '"qwe"',
+        artifactoryPassword: '"qwe@123"',
+        jwtSecret          : '"QWEQ"'
+]
+
+
+ext.allSources = '"22,11"'
+
+ext.SSL_PINNING_ENABLED = '"true"'
+ext.IS_ROOTED = '"false"'
+ext.proguardEnabled = false
+
+
+//APP GRADLE
+
+
+buildConfigField 'String', 'SOURCE_ID', keys.investEasySource
+buildConfigField 'String', 'APP_ID', keys.EasyAppId
+resValue "string", "app_name", appName.investEasyProd
+resValue "string", "content_provider", keys.invesEasyAppId
+resValue "string", "nv_key", nvKeys.investEasyProduction
+buildConfigField 'String', 'ENDPOINT', ENDPOINT_BETA
+buildConfigField 'String', 'CMSENDPOINT', BETA_CMS
+buildConfigField "String", "EXISTING_APP_SOURCEID", keys.existingSourceIdEasy
+resValue "string", "investap", keys.investEasyName
+manifestPlaceholders = [
+        nvBrandId   : nvBrandId.investEasyProduction,
+        appIcon     : "@mipmap/ic_launcher_investeasy",
+        appIconRound: "@mipmap/ic_launcher_investeasy_round",
+        sbimfInitiated: sbimfInitiated.investEasyProduction,
+        branchIOAppLink: branchIOLinks.investEasyProductionAppLink,
+        branchIOAppLinkAlternate: branchIOLinks.investEasyProductionAppLinkAlternate
+]
+versionCode investEasyVCode
+versionName investEasyVName
+
+* */
