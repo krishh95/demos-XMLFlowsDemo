@@ -26,15 +26,17 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
-
+        buildConfigField 'boolean',"useXML", useXML
+        buildConfigField 'String',"BASE_API", BASEAPI
     }
 
     buildTypes {
+
         debug{
-            buildConfigField 'boolean',"useXML", useXML
+
         }
         release {
-            buildConfigField 'boolean',"useXML", useXML
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -109,6 +111,8 @@ dependencies {
 
 
     //navigation
+    implementation "androidx.navigation:navigation-compose:2.6.0"
+
     //implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     //implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 

@@ -1,6 +1,6 @@
-package bade.krushna.storeApp.common.customClasses
+package bade.krushna.storeApp.presentation.resultModel
 
-data class State<T>(
+data class UIState<T>(
     val isLoading : Boolean = false,
     val error : Exception? = null,
     val data : T? = null,

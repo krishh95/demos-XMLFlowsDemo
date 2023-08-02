@@ -1,9 +1,15 @@
 package bade.krushna.storeApp.di
 
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import bade.krushna.storeApp.data.remote.IApiServices
+import bade.krushna.storeApp.presentation.navigation.Navigation
+import bade.krushna.xmlflowsdemo.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
@@ -19,7 +25,7 @@ object Dependancies {
     fun retrofit(okHttpClient: OkHttpClient) : IApiServices {
         return Retrofit
             .Builder()
-            .baseUrl("https://fakestoreapi.com/")
+            .baseUrl(BuildConfig.BASE_API)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -37,8 +43,12 @@ object Dependancies {
 
 
 
+
+
 }
 
 @Module
-@InstallIn(FragmentComponent::class)
-object Fragments
+@InstallIn(ActivityComponent::class)
+object Acitivities{
+
+}

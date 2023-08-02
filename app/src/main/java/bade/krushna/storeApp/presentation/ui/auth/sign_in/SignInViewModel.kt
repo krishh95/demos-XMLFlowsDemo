@@ -1,16 +1,16 @@
-package bade.krushna.storeApp.presentation.ui.views.auth.sign_in
+package bade.krushna.storeApp.presentation.ui.auth.sign_in
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import bade.krushna.storeApp.common.customClasses.State
 import bade.krushna.storeApp.common.customClasses.Status
 import bade.krushna.storeApp.common.customClasses.field.IField
 import bade.krushna.storeApp.common.customClasses.field.StringField
 import bade.krushna.storeApp.common.customClasses.passwords.IPassword
 import bade.krushna.storeApp.data.remote.requestModels.LoginRequest
-import bade.krushna.storeApp.domain.use_cases.auth.UseCaseLogin
-import bade.krushna.storeApp.domain.use_cases.auth.UseCaseValidatePassword
-import bade.krushna.storeApp.domain.use_cases.auth.UseCaseValidateUserName
+import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseSignIn
+import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseValidatePassword
+import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseValidateUserName
+import bade.krushna.storeApp.presentation.resultModel.UIState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,30 +20,30 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(
-    val useCaseLogin: UseCaseLogin,
+class SignInViewModel @Inject constructor(
+    val useCaseLogin: UseCaseSignIn,
     val useCaseValidateUserName : UseCaseValidateUserName,
     val useCaseValidatePassword : UseCaseValidatePassword
 ): ViewModel() {
     lateinit var password : IPassword
     lateinit var userName : IField
 
-    var _uiState = MutableStateFlow(State<Any>())
+    var _uiState = MutableStateFlow(UIState<Any>())
     val uiState = _uiState.asStateFlow()
 
-    var _validateUserNameState = MutableSharedFlow<State<*>>()
+    var _validateUserNameState = MutableSharedFlow<UIState<*>>()
     val validateUserNameState = _uiState.asSharedFlow()
 
-    var _validatePasswordState = MutableSharedFlow<State<*>>()
+    var _validatePasswordState = MutableSharedFlow<UIState<*>>()
     val validatePasswordState = _uiState.asSharedFlow()
 
 
-    fun onEvent(loginEvents: LoginEvents){
+    fun onEvent(signInEvents: SignInEvents){
         viewModelScope.launch(Dispatchers.IO) {
-            when (loginEvents) {
-                is LoginEvents.Login -> {
+            when (signInEvents) {
+                is SignInEvents.SignIn -> {
 
-                    _uiState.value = State(
+                    _uiState.value = UIState(
                         isLoading = true
                     )
 
@@ -57,26 +57,26 @@ class LoginViewModel @Inject constructor(
                         )
 
                         _uiState.emit(
-                            State(
+                            UIState(
                                 data = result
                             )
                         )
 
                     }.onFailure {
                         _uiState.emit(
-                            State(
+                            UIState(
                                 error = Exception(it.cause)
                             )
                         )
                     }
                 }
 
-                is LoginEvents.ValidatePassword -> {
+                is SignInEvents.ValidatePassword -> {
 
-                    when (val status = useCaseValidatePassword(loginEvents)) {
+                    when (val status = useCaseValidatePassword(signInEvents)) {
                         is Status.Failed -> {
                             _validatePasswordState.emit(
-                                State<Nothing>(
+                                UIState<Nothing>(
                                     error = status.error
                                 )
                             )
@@ -85,7 +85,7 @@ class LoginViewModel @Inject constructor(
                         is Status.Success<*> -> {
                             password = status.data as IPassword
                             _validatePasswordState.emit(
-                                State(
+                                UIState(
                                     data = status.data
                                 )
                             )
@@ -96,12 +96,12 @@ class LoginViewModel @Inject constructor(
 
                 }
 
-                is LoginEvents.ValidateUserName -> {
+                is SignInEvents.ValidateUserName -> {
 
-                    when (val status = useCaseValidateUserName(loginEvents)) {
+                    when (val status = useCaseValidateUserName(signInEvents)) {
                         is Status.Failed -> {
                             _validateUserNameState.emit(
-                                State<Nothing>(
+                                UIState<Nothing>(
                                     error = status.error
                                 )
                             )
@@ -110,7 +110,7 @@ class LoginViewModel @Inject constructor(
                         is Status.Success<*> -> {
                             userName = status.data as IField
                             _validateUserNameState.emit(
-                                State(
+                                UIState(
                                     data = status.data
                                 )
                             )

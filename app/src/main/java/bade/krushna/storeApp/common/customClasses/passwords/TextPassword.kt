@@ -1,6 +1,6 @@
 package bade.krushna.storeApp.common.customClasses.passwords
 
-import bade.krushna.storeApp.Regexes.SPECIAL_CHAR_MATCHING_REGEX
+import bade.krushna.storeApp.common.Regexes.SPECIAL_CHAR_MATCHING_REGEX
 import bade.krushna.storeApp.common.customClasses.Status
 import bade.krushna.storeApp.common.lessThan
 import kotlin.jvm.Throws

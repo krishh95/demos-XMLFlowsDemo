@@ -1,4 +1,4 @@
-package bade.krushna.storeApp.presentation.ui.views.mainActivity.ui.theme
+package bade.krushna.storeApp.presentation.ui.mainActivity.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

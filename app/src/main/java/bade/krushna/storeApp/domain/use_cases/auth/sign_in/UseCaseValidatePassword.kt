@@ -1,26 +1,26 @@
-package bade.krushna.storeApp.domain.use_cases.auth
+package bade.krushna.storeApp.domain.use_cases.auth.sign_in
 
 import bade.krushna.storeApp.common.customClasses.Status
 import bade.krushna.storeApp.common.customClasses.passwords.TextPassword
 import bade.krushna.storeApp.common.customClasses.passwords.TokenPassword
-import bade.krushna.storeApp.presentation.ui.views.auth.sign_in.LoginEvents
+import bade.krushna.storeApp.presentation.ui.auth.sign_in.SignInEvents
 
 
 class UseCaseValidatePassword {
 
     operator fun invoke(
-        loginEvents: LoginEvents.ValidatePassword
+        signInEvents: SignInEvents.ValidatePassword
     ): Status? {
-        return when (loginEvents.type) {
+        return when (signInEvents.type) {
             is TextPassword -> {
                 TextPassword.init(
-                    (loginEvents).password
+                    (signInEvents).password
                 )
             }
 
             is TokenPassword -> {
                 TokenPassword.init(
-                    (loginEvents).password
+                    (signInEvents).password
                 )
             }
 

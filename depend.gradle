@@ -1,5 +1,5 @@
 ext.useXML = "false"
-ext.BASEAPI = "false"
+ext.BASEAPI = '"https://fakestoreapi.com/"'
 
 
 
