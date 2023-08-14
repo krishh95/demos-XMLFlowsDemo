@@ -7,10 +7,14 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Android Studio default JDK" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SignIn" />
+            <option value="$PROJECT_DIR$/SignIn/SignIn_Data" />
+            <option value="$PROJECT_DIR$/SignIn/SignIn_Presentation" />
+            <option value="$PROJECT_DIR$/SignIn/SignIn_UseCase" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

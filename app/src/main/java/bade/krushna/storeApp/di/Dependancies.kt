@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import bade.krushna.storeApp.data.remote.IApiServices
 import bade.krushna.storeApp.presentation.navigation.Navigation
-import bade.krushna.xmlflowsdemo.BuildConfig
+import bade.krushna.storeApp.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -8,32 +8,22 @@ import bade.krushna.storeApp.presentation.ui.auth.sign_in.SignInRoute
 import bade.krushna.storeApp.presentation.ui.auth.splash.SplashRoute
 
 class Navigation(val controller: NavHostController):INavigationManager {
-
+val nav= this@Navigation
     @Composable
     fun Navigate() {
         NavHost(
             navController = controller,
-            startDestination = SplashRoute(
-                callbackManager = this@Navigation
-            ).getRoute(),
+            startDestination = SplashRoute(nav).getRoute(),
         ) {
 
-            SplashRoute(
-                callbackManager = this@Navigation
-            ).navigate(navGraphBuilder = this)
+            SplashRoute(nav).navigate(navGraphBuilder = this)
 
             navigation(
-                route = SignInRoute(
-                    callbackManager = this@Navigation
-                ).baseRoute,
-                startDestination = SignInRoute(
-                    callbackManager = this@Navigation
-                ).getRoute()
+                route = SignInRoute(nav).baseRoute,
+                startDestination = SignInRoute(nav).getRoute()
             ) {
 
-                SignInRoute(
-                    callbackManager = this@Navigation
-                ).navigate(navGraphBuilder = this)
+                SignInRoute(nav).navigate(navGraphBuilder = this)
 
             }
         }
@@ -53,9 +43,13 @@ class Navigation(val controller: NavHostController):INavigationManager {
         )
     }
 
+    override fun popNavGraph(navRoute: String) {
+        controller.popBackStack(route = navRoute, inclusive = false, saveState = false)
+    }
+
     override fun navigate(navigation: INavigate) {
         navigation.navigateToMe(
-            navigator = this@Navigation
+            navigator = nav
         )
     }
 }

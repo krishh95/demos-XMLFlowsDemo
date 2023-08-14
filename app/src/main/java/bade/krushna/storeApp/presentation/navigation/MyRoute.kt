@@ -8,11 +8,10 @@ interface MyRoute{
     var baseRoute : String
 }
 
-abstract class INavigate(
-    private var callbackManager : INavigationManager
-){
+abstract class INavigate{
     abstract fun getRoute():String
-    protected fun getCallbackManager() : INavigationManager = callbackManager
+    abstract fun callbackManager() : INavigationManager
+
     @Composable
     protected abstract fun NavigationView()
 
@@ -29,24 +28,26 @@ abstract class INavigate(
         }
     }
 
-    fun popupBackStack() = callbackManager.popBackStack()
+    fun popupBackStack() = callbackManager().popBackStack()
+    fun popNavGraph(route : String) = callbackManager().popNavGraph(route)
 
     fun popupBackStack(
         navigation: INavigate,
         popThatScreenToo : Boolean
-    ) = callbackManager.popBackStack(
+    ) = callbackManager().popBackStack(
         navigation = navigation,
         popThatScreenToo = popThatScreenToo
     )
 
     fun navigate(
         navigation: INavigate
-    )= callbackManager.navigate(navigation = navigation)
+    )= callbackManager().navigate(navigation = navigation)
 
 }
 
 interface INavigationManager{
     fun popBackStack()
+    fun popNavGraph(navRoute : String)
     fun popBackStack(
         navigation: INavigate,
         popThatScreenToo : Boolean

@@ -2,7 +2,6 @@ ext.useXML = "false"
 ext.BASEAPI = '"https://fakestoreapi.com/"'
 
 
-
 /*
 ext.smallcase = [
         gatewayName        : '"wqe"',

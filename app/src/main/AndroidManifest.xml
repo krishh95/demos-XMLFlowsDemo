@@ -9,15 +9,10 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.XMLFlowsDemo"
         tools:targetApi="31">
-        <activity
-            android:name="bade.krushna.storeApp.presentation.ui.views.mainActivity.MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.XMLFlowsDemo" />
         <activity
             android:name="bade.krushna.storeApp.presentation.ui.mainActivity.MainActivity"
             android:exported="true">

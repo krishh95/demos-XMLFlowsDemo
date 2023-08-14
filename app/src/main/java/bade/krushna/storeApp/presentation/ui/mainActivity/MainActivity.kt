@@ -5,11 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.navigation.compose.rememberNavController
-import bade.krushna.storeApp.di.Dependancies
+import bade.krushna.storeApp.R
 import bade.krushna.storeApp.presentation.navigation.Navigation
-import bade.krushna.xmlflowsdemo.R
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity: ComponentActivity() {

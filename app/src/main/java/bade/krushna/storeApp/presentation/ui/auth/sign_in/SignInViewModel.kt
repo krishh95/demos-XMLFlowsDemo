@@ -6,7 +6,7 @@ import bade.krushna.storeApp.common.customClasses.Status
 import bade.krushna.storeApp.common.customClasses.field.IField
 import bade.krushna.storeApp.common.customClasses.field.StringField
 import bade.krushna.storeApp.common.customClasses.passwords.IPassword
-import bade.krushna.storeApp.data.remote.requestModels.LoginRequest
+import bade.krushna.storeApp.data.remote.requestModels.SignInRequest
 import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseSignIn
 import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseValidatePassword
 import bade.krushna.storeApp.domain.use_cases.auth.sign_in.UseCaseValidateUserName
@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 class SignInViewModel @Inject constructor(
@@ -50,7 +49,7 @@ class SignInViewModel @Inject constructor(
                     kotlin.runCatching {
 
                         val result = useCaseLogin(
-                            LoginRequest.init(
+                            SignInRequest.init(
                                 userName as StringField,
                                 password
                             )
